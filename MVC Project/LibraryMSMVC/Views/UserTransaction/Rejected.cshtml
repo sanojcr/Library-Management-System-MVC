@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LibraryMSMVC.Models.tblTransaction>
+
+@{
+    ViewBag.Title = "Rejected";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<br />
+<h4>Rejected list</h4>
+<hr />
+<div class="col-6 offset-3">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6">
+
+                <div class="card" style="max-width: 18rem;">
+                    <div class="card-header">
+                        <i class="fas fa-book"></i>
+                        @Html.DisplayFor(modelItem => item.BookTitle)
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h6 class="card-title">Book ISBN</h6>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.BookISBN)
+                            </p>
+
+                        </div>
+                        <div>
+                            <h6 class="card-title">Rejected Date</h6>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.TranDate)
+                            </p>
+                        </div>
+
+                        <p style="margin-left:10px"></p>
+                        <div onclick="rerequestBook()" class="btn btn-sm btn-primary" data-toggle='tooltip' title='Rerequest book'>
+                            <i class="fas fa-redo-alt"></i>
+                            @Html.ActionLink("Rerequest", "RerequestRejected", new { tranId = item.TranId }, new { @class = "", style = "text-decoration:none; color: white" })
+                        </div>
+                        <div onclick="requestCancel()" class="btn btn-sm btn-danger" data-toggle='tooltip' title='Cancel request'>
+                            <i class="fas fa-minus-circle"></i>
+                            @Html.ActionLink("Cancel", "CancelRejected", new { tranId = item.TranId }, new { @class = "", style = "text-decoration:none; color: white" })
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+            </div>
+
+        }
+    </div>
+    <div style="margin:30%" class="text-center text-danger">@Session["rejectMessage"]</div>
+</div>
+
+<script>
+    @*Scripts for cancel alert*@
+    function requestCancel(){
+                alert("Book request canceled successfully")
+    };
+    @*Scripts for rerequest alert*@
+    function rerequestBook(){
+                alert("Rerequest successfully")
+    };
+</script>

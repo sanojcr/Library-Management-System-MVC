@@ -1,0 +1,225 @@
+﻿@model IEnumerable<LibraryMSMVC.Models.tblBook>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<br />
+<h4>Book list</h4>
+<hr />
+<br />
+
+<link rel="stylesheet" , href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+<link rel="stylesheet" , href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
+<table width="100%" class="table-sm table-hover table-bordered" id="example">
+    <thead class="bg-danger text-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copyright)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                BookTitle
+            </th>
+            <th>
+                BookCategory
+            </th>
+            <th>
+                BookAuthor
+            </th>
+            <th>
+                BookCopies
+            </th>
+            <th>
+                BookPub
+            </th>
+            <th>
+                BookPubName
+            </th>
+            <th>
+                BookISBN
+            </th>
+            <th>
+                Copyright
+            </th>
+            <th>
+                DateAdded
+            </th>
+            <th>
+                Status
+            </th>
+
+        </tr>
+    </tbody>
+</table>
+<br />
+
+@*Java scripts*@
+@if (Session["requestMsg"] != null)
+{
+    <script type="text/javascript">
+            @*Popups the alert if the session data is there*@
+            window.onload = function () {
+                alert("@Session["requestMsg"]");
+                window.location.href = "/Borrow/RequestAlert";
+            };
+    </script>
+
+}
+
+@section scripts{
+    @*External scripts for data table plugins*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        @*Data table plugin*@
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "/tblBooks/GetAll",
+                    "type": "get",
+                    "datatype": "json",
+                },
+                "columns": [
+                    { "data": "BookTitle" },
+                    { "data": "BookCategory" },
+                    { "data": "BookAuthor" },
+                    { "data": "BookCopies" },
+                    { "data": "BookPub" },
+                    { "data": "BookPubName" },
+                    { "data": "BookISBN" },
+                    { "data": "Copyright" },
+                    { "data": "DateAdded" },
+                    { "data": "Status" },
+                    {
+                        "data": "BookId", "render": function (idhere) {
+
+                            return " <a class='btn btn-sm btn-info text-light' data-toggle='tooltip' title='Request book' href='@Url.Action("Borrow","Borrow")?bookId=" + idhere + "'> <i class='fas fa-hand-point-up'></i> Request</a>";
+                        },
+                        "orderable": false,
+                        "width": "70px"
+                    }
+                ],
+                "language": {
+                    "emptyTable": "No data found, Add new items"
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copyright)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAuthor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookCopies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookPub)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookPubName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Copyright)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Request", "Borrow", new { bookId = item.BookId })
+
+                </td>
+            </tr>
+        }
+
+    </table>*@

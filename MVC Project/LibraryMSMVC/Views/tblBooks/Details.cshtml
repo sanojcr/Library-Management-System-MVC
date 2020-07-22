@@ -1,0 +1,132 @@
+﻿@model LibraryMSMVC.Models.tblBook
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Book details</h4>
+<hr />
+<div>
+    
+    <div class="col-6 offset-3 card">
+        
+        <br />
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>@Html.DisplayNameFor(model => model.BookTitle)</h5>
+                    <p class="text-muted">@Html.DisplayFor(model => model.BookTitle)</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h5>@Html.DisplayNameFor(model => model.BookCategory)</h5>
+                    <p class="text-muted"> @Html.DisplayFor(model => model.BookCategory)</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5> @Html.DisplayNameFor(model => model.BookAuthor)</h5>
+                    <p class="text-muted"> @Html.DisplayFor(model => model.BookAuthor)</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h5>@Html.DisplayNameFor(model => model.BookCopies)</h5>
+                    <p class="text-muted">@Html.DisplayFor(model => model.BookCopies)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.BookPub)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.BookPub)
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.BookPubName)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.BookPubName)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.BookISBN)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.BookISBN)
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.Copyright)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.Copyright)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.DateAdded)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.DateAdded)
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.Status)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-sm btn-dark" data-toggle='tooltip' title='Edit book'>
+                <i class="fas fa-edit"></i>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }, new { @class = "", style = "text-decoration:none; color: white" })
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<div class="btn btn-sm btn-secondary" data-toggle='tooltip' title='Back to book list'>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    @Html.ActionLink("Back", "Index", null, new { @class = "", style = "text-decoration:none; color: white" })
+</div>
+<br />
+<br />

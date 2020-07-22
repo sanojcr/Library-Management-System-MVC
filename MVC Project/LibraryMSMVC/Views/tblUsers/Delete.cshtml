@@ -1,0 +1,115 @@
+﻿@model LibraryMSMVC.Models.tblUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h4>Are you sure you want to delete this?</h4>
+<hr />
+<div>
+    
+
+    <div class="col-6 offset-3 card">
+
+        <br />
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserName)
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserGender)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserGender)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserDep)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserDep)
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserAdmNo)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserAdmNo)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserEmail)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserEmail, new { style = "" })
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserPass)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserPass)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div type="submit" value="Delete" class="">
+                    <button onclick="deleteMessage()" class="btn btn-sm btn-danger" data-toggle='tooltip' title='Delete user'>
+                        <i class="fas fa-trash iconop"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<br />
+
+<div class="btn btn-sm btn-secondary" data-toggle='tooltip' title='Back to user list'>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    @Html.ActionLink("Back", "Index", null, new { @class = "", style = "text-decoration:none; color: white" })
+</div>
+<br />
+<br />
+
+@section scripts{
+    <script>
+        @*Scripts for delete alert*@
+        function deleteMessage() {
+            alert("User deleted successfully")
+        }
+    </script>
+}

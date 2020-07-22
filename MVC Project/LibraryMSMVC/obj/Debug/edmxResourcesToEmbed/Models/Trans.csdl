@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryMSWAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblTransaction">
+    <Key>
+      <PropertyRef Name="TranId" />
+    </Key>
+    <Property Name="TranId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookId" Type="Int32" />
+    <Property Name="BookTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TranStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TranDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="TransEntity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblTransactions" EntityType="Self.tblTransaction" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,148 @@
+﻿@model LibraryMSMVC.Models.tblBook
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <h4>Update book</h4>
+    <hr />
+    <div class="col-6 offset-3 card">
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.BookId)
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.BookTitle, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookTitle, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.BookCategory, htmlAttributes: new { @class = "control-label" })
+
+                @Html.DropDownListFor(model => model.BookCategory, new List<SelectListItem> {
+                new SelectListItem{ Text="Action", Value="Action"},
+                new SelectListItem{ Text="Drama", Value="Drama"},
+                new SelectListItem{ Text="Romance", Value="Romance"},
+                new SelectListItem{ Text="Fiction", Value="Fiction"},
+                new SelectListItem{ Text="Science", Value="Science"},
+                new SelectListItem{ Text="Horror", Value="Horror"},
+                }, "Select catagory", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BookCategory, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.BookAuthor, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookAuthor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookAuthor, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.BookCopies, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookCopies, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookCopies, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.BookPub, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookPub, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookPub, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.BookPubName, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookPubName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookPubName, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.BookISBN, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.BookISBN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BookISBN, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.Copyright, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.Copyright, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Copyright, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-row form-group">
+            <div class="col">
+                @Html.LabelFor(model => model.DateAdded, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+
+                @Html.DropDownListFor(model => model.Status, new List<SelectListItem> {
+                new SelectListItem{ Text="New", Value="New"},
+                new SelectListItem{ Text="Old", Value="Old"},
+                new SelectListItem{ Text="Damaged", Value="Damaged"}
+                }, "Select status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <button onclick="" type="submit" value="Update" class="btn btn-primary btn-sm" data-toggle='tooltip' title='Update book'>
+                <i class="fas fa-check-circle"></i>
+                Update
+            </button>
+        </div>
+    </div>
+    <br />
+}
+
+<div class="btn btn-sm btn-secondary" data-toggle='tooltip' title='Back to book list'>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    @Html.ActionLink("Back", "Index", null, new { @class = "", style = "text-decoration:none; color: white" })
+</div>
+<br />
+<br />
+
+@*External scripts for date picker plugins*@
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        @*Date picker plugin*@
+        $(function () {
+            $(".datepicker").datepicker({ changeMonth: true, changeYear: true });
+        });
+        @*Scripts for update alert*@
+        function updateMessage() {
+            alert("Book updated successfully")
+        }
+    </script>
+}
+

@@ -1,0 +1,78 @@
+﻿
+
+
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": []
+}
+
+
+
+
+@*<div class="card">
+        <table class="table-sm">
+            <tr class="bg-success text-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserGender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserDep)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserAdmNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserPass)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserGender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserDep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAdmNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserPass)
+                    </td>
+                    <td>
+                        <div class="btn btn-group-sm">
+                            <div class="btn btn-dark btn-sm iconop">
+                                <i class="fas fa-edit"></i>
+                                @Html.ActionLink("Edit", "Edit", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-warning">
+                                <i class="fas fa-info-circle iconop"></i>
+                                @Html.ActionLink("Details", "Details", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash iconop"></i>
+                                @Html.ActionLink("Delete", "Delete", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Accepted";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+<h4>Accepted list</h4>
+<hr />
+
+@*External stylesheet for data table plugins*@
+<link rel="stylesheet" , href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+<link rel="stylesheet" , href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
+<table width="100%" class="table table-hover table-bordered" id="example">
+    <thead class="bg-success text-light">
+        <tr>
+            <th>
+                Book Title
+            </th>
+            <th>
+                Book ISBN
+            </th>
+            <th>
+                Accepted Date
+            </th>
+            <th>
+                User Name
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                BookTitle
+            </th>
+            <th>
+                BookISBN
+            </th>
+            <th>
+                TranDate
+            </th>
+            <th>
+                UserName
+            </th>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+
+@*Java scripts*@
+@section scripts{
+    @*External scripts for data table plugins*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        @*Data table plugin*@
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "/AdminTransaction/GetAllAccepted",
+                    "type": "get",
+                    "datatype": "json",
+                },
+                "columns": [
+                    { "data": "BookTitle" },
+                    { "data": "BookISBN" },
+                    { "data": "TranDate" },
+                    { "data": "UserName" },
+                ],
+                "language": {
+                    "emptyTable": "No data found, Go to Request section to accept a request"
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,96 @@
+﻿@model LibraryMSMVC.Models.tblUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>User details</h4>
+<hr />
+<div>
+
+    <div class="col-6 offset-3 card">
+
+        <br />
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </h5>
+                    <p class="text-muted">
+                    @Html.DisplayFor(model => model.UserName)
+                    </p>
+                        </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserGender)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserGender)
+                    </p>
+                        </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserDep)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserDep)
+                    </p>
+                        </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserAdmNo)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserAdmNo)
+                    </p>
+                        </div>
+            </div>
+        </div>
+        <div class="form-row form-group text-center">
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserEmail)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserEmail, new { style=""})
+                    </p>
+                        </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5>
+                        @Html.DisplayNameFor(model => model.UserPass)
+                    </h5>
+                    <p class="text-muted">
+                        @Html.DisplayFor(model => model.UserPass)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-sm btn-dark" data-toggle='tooltip' title='Edit user'>
+                <i class="fas fa-edit"></i>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+            </button>
+        </div>
+    </div>
+</div>
+    <br />
+    <div class="btn btn-sm btn-secondary" data-toggle='tooltip' title='Back to user list'>
+        <i class="fas fa-long-arrow-alt-left"></i>
+        @Html.ActionLink("Back", "Index", null, new { @class = "", style = "text-decoration:none; color: white" })
+    </div>
+    <br />
+    <br />

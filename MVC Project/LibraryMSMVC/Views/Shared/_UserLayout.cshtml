@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - UrLMS</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+    <link href="~/Content/lmscustom.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body style="padding:unset">
+    <div>
+        <div style="background-color:#d9534f;">
+            <div style="background-color:#5cb85c; height:8px; width:450px">
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+            <span class="icon">
+                <i class="fas fa-book-open"></i>
+            </span>
+            @Html.ActionLink("UrLMS", "MenuBorrow", "Borrow", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item btn-sm btn-danger">
+                        <i class="fas fa-home"></i>
+                        @Html.ActionLink("Home", "UserHome", "Borrow",null, new { @class = "nav-link icon",style="display:inline" })
+                    </li>
+                    <li class="nav-item btn-sm btn-danger">
+                        <i class="fas fa-address-card"></i>
+                        @Html.ActionLink("About", "UserAbout", "Borrow",null,  new { @class = "nav-link icon" ,style="display:inline"  })
+                    </li>
+                    <li class="nav-item btn-sm btn-danger">
+                        <i class="fas fa-id-badge"></i>
+                        @Html.ActionLink("Contact", "UserContact", "Borrow",null, new { @class = "nav-link icon" ,style="display:inline"  })
+                    </li>
+                </ul>
+                <ul class="navbar-nav justify-content-end" style="padding-right:50px">
+                    <li class="" style="padding-left:5px; padding-right:5px">
+                        @Html.ActionLink("Borrow", "MenuBorrow", "Borrow", new { area = "" }, new { @class = "nav-item btn-sm btn-primary text-light", style = "text-decoration:none;" })
+                    </li>
+                    <li class="" style="padding-left:5px; padding-right:5px">
+
+                        @Html.ActionLink("Requested", "MenuRequested", "Borrow", null, new { @class = "nav-item btn-sm btn-primary text-light", style = "text-decoration:none;" })
+                    </li>
+                    <li style="padding-left: 5px; padding-right: 5px ">
+                        @Html.ActionLink("Received", "MenuReceived", "Borrow", null, new { @class = "nav-item btn-sm btn-primary text-light", style = "text-decoration:none;" })
+                        
+                    </li>
+                    <li class="" style="padding-left:5px; padding-right:10px">
+                        @Html.ActionLink("Rejected", "MenuRejected", "Borrow", null, new { @class = "nav-item btn-sm btn-primary text-light", style = "text-decoration:none;" })
+                        
+                    </li>
+                </ul>
+                <span class="text-light" style="padding-top:1px; padding-right:15px">Welcome back @Session["userName"]!!</span>
+                <ul class="navbar-nav justify-content-end">
+
+                    <li class="nav-item btn btn-sm btn-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link", onclick = "return alert('Logged out successfully');", style = "display:inline" })
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div style="padding-left:20px; padding-right:20px">
+        @RenderBody()
+    </div>
+    <div>
+        
+        <footer>
+            <div style="" class="card text-center text-white bg-danger">
+                <div class="card-header">
+                    Thank you for visiting us
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Social Platforms</h5>
+                    <div style="width: auto;" class="form-group">
+                        <span>
+                            <i class="fab fa-facebook-square"></i>
+                        </span>
+                        <span>
+                            <i class="fab fa-twitter-square"></i>
+                        </span>
+                        <span>
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                    </div>
+                </div>
+                <p>&copy; @DateTime.Now.Year - UrLMS</p>
+            </div>
+        </footer>
+    </div>
+    <div style="background-color:#d9534f;">
+        <div style="background-color:#5cb85c; height:8px; width:450px">
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,150 @@
+﻿@model LibraryMSMVC.Models.tblBook
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Are you sure you want to delete this?</h4>
+<hr />
+
+<div>
+
+    <div>
+
+        <div class="col-6 offset-3 card">
+            <br />
+            <div class="form-row form-group text-center">
+                <div class="col">
+                    <div class="card">
+                        <h5>@Html.DisplayNameFor(model => model.BookTitle)</h5>
+                        <p class="text-muted">@Html.DisplayFor(model => model.BookTitle)</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h5>@Html.DisplayNameFor(model => model.BookCategory)</h5>
+                        <p class="text-muted"> @Html.DisplayFor(model => model.BookCategory)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group text-center">
+                <div class="col">
+                    <div class="card">
+                        <h5> @Html.DisplayNameFor(model => model.BookAuthor)</h5>
+                        <p class="text-muted"> @Html.DisplayFor(model => model.BookAuthor)</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h5>@Html.DisplayNameFor(model => model.BookCopies)</h5>
+                        <p class="text-muted">@Html.DisplayFor(model => model.BookCopies)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group text-center">
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.BookPub)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.BookPub)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.BookPubName)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.BookPubName)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group text-center">
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.BookISBN)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.BookISBN)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.Copyright)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Copyright)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row form-group text-center">
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.DateAdded)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.DateAdded)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <h5>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </h5>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.Status)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div type="submit" value="Delete" class="">
+                        <button onclick="deleteMessage()" class="btn btn-sm btn-danger" data-toggle='tooltip' title='Delete book'>
+                            <i class="fas fa-trash iconop"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <br />
+    <div class="btn btn-sm btn-secondary" data-toggle='tooltip' title='Back to book list'>
+        <i class="fas fa-long-arrow-alt-left"></i>
+        @Html.ActionLink("Back", "Index", null, new { @class = "", style = "text-decoration:none; color: white" })
+    </div>
+    <br />
+    <br />
+</div>
+
+@section scripts{
+    <script>
+        @*Scripts for delete alert*@
+        function deleteMessage(){
+            alert("Book deleted successfully")
+        }
+    </script>
+}

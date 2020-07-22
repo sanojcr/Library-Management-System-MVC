@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibraryMSWAModelStoreContainer" CdmEntityContainer="BookEntity">
+    <EntitySetMapping Name="tblBooks">
+      <EntityTypeMapping TypeName="LibraryMSWAModel.tblBook">
+        <MappingFragment StoreEntitySet="tblBooks">
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+          <ScalarProperty Name="BookCategory" ColumnName="BookCategory" />
+          <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+          <ScalarProperty Name="BookCopies" ColumnName="BookCopies" />
+          <ScalarProperty Name="BookPub" ColumnName="BookPub" />
+          <ScalarProperty Name="BookPubName" ColumnName="BookPubName" />
+          <ScalarProperty Name="BookISBN" ColumnName="BookISBN" />
+          <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

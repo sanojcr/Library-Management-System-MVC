@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LibraryMSMVC.Models.tblTransaction>
+
+@{
+    ViewBag.Title = "Received";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<br />
+<h4>Received list</h4>
+<hr />
+<div class="col-6 offset-3">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6">
+
+                <div class="card" style="max-width: 18rem;">
+                    <div class="card-header">
+                        <i class="fas fa-book"></i>
+                        @Html.DisplayFor(modelItem => item.BookTitle)
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h6 class="card-title">Book ISBN</h6>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.BookISBN)
+                            </p>
+
+                        </div>
+                        <div>
+                            <h6 class="card-title">Received Date</h6>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.TranDate)
+                            </p>
+                        </div>
+
+                        <p style="margin-left:10px"></p>
+                        <div onclick="returnBook()" class="btn btn-sm btn-danger" data-toggle='tooltip' title='Return book'>
+                            <i class="fas fa-eraser"></i>
+                            @Html.ActionLink("Return", "ReturnReceived", new { tranId = item.TranId }, new { @class = "", style = "text-decoration:none; color: white" })
+                        </div>
+                        <!--<div class="btn btn-sm btn-warning" data-toggle='tooltip' title='Read book'>
+                            <i class="fas fa-book-open iconop"></i>
+                            <span style="color:white">Read</span>-->
+                            @*@Html.ActionLink("Read", null, null, new { @class = "", style = "text-decoration:none; color: white" })*@
+                        <!--</div>-->
+                    </div>
+
+                </div>
+                <br />
+            </div>
+
+        }
+    </div>
+    <div style="margin:30%" class="text-center text-danger">@Session["receiveMessage"]</div>
+</div>
+
+<script>
+    @*Scripts for return alert*@
+    function returnBook(){
+                alert("Book returned successfully")
+    };
+</script>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibraryMSWAModelStoreContainer" CdmEntityContainer="TransEntity">
+    <EntitySetMapping Name="tblTransactions">
+      <EntityTypeMapping TypeName="LibraryMSWAModel.tblTransaction">
+        <MappingFragment StoreEntitySet="tblTransaction">
+          <ScalarProperty Name="TranId" ColumnName="TranId" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+          <ScalarProperty Name="BookISBN" ColumnName="BookISBN" />
+          <ScalarProperty Name="TranStatus" ColumnName="TranStatus" />
+          <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

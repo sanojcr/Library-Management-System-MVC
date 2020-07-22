@@ -1,0 +1,242 @@
+﻿@model IEnumerable<LibraryMSMVC.Models.tblBook>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Book list</h4>
+<hr />
+<div class="btn btn-sm btn-primary" data-toggle='tooltip' title='Add book'>
+    <i class="far fa-plus-square"></i>
+    @Html.ActionLink("Add", "Create", null, new { @class = "", style = "text-decoration:none; color: white" })
+</div>
+
+<br />
+<br />
+
+@*External stylesheet for data table plugins*@
+<link rel="stylesheet" , href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+<link rel="stylesheet" , href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
+<table width="100%" class="table-sm table-hover table-bordered" id="example">
+    <thead class="bg-success text-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Copyright)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                BookTitle
+            </th>
+            <th>
+                BookCategory
+            </th>
+            <th>
+                BookAuthor
+            </th>
+            <th>
+                BookCopies
+            </th>
+            <th>
+                BookPub
+            </th>
+            <th>
+                BookPubName
+            </th>
+            <th>
+                BookISBN
+            </th>
+            <th>
+                Copyright
+            </th>
+            <th>
+                DateAdded
+            </th>
+            <th>
+                Status
+            </th>
+
+        </tr>
+    </tbody>
+</table>
+<br />
+
+@*Java scripts*@
+@section scripts{
+    @*External scripts for data table plugins*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "/tblBooks/GetAll",
+                    "type": "get",
+                    "datatype": "json",
+                },
+                "columns": [
+                    { "data": "BookTitle" },
+                    { "data": "BookCategory" },
+                    { "data": "BookAuthor" },
+                    { "data": "BookCopies" },
+                    { "data": "BookPub" },
+                    { "data": "BookPubName" },
+                    { "data": "BookISBN" },
+                    { "data": "Copyright" },
+                    { "data": "DateAdded" },
+                    { "data": "Status" },
+                    {
+                        "data": "BookId", "render": function (idhere) {
+
+                            return " <a class='btn btn-sm btn-dark text-light' data-toggle='tooltip' title='Edit book' href='@Url.Action("Edit", "TblBooks")/" + idhere + "'> <i class='fas fa-edit'></i> Edit</a> <a class='btn btn-sm btn-warning text-light', style='margin-left:px' data-toggle='tooltip' title='Book details' href='@Url.Action("Details", "TblBooks")/" + idhere+"' > <i class='fas fa-info-circle iconop'></i> Details</a > <a class='btn btn-sm btn-danger text-light', style='margin-left:px' data-toggle='tooltip' title='Delete book' href='@Url.Action("Delete", "TblBooks")/" + idhere+"' > <i class='fas fa-trash iconop'></i> Delete</a > ";
+                        },
+                        "orderable": false,
+                        "width": "245px"
+                    }
+                ],
+                "language": {
+                    "emptyTable": "No data found, Add new items"
+                }
+            });
+        });
+    </script>
+}
+
+@if (Session["operationMsg"] != null)
+{
+    <script type="text/javascript">
+            @*Popups the alert if the session data is there*@
+            window.onload = function () {
+                alert("@Session["operationMsg"]");
+                window.location.href = "/TblBooks/OperationAlert";
+            };
+    </script>
+
+}
+
+@*<div class="card">
+        <table class="table-sm">
+            <tr class="bg-success text-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.BookTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookAuthor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookCopies)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookPub)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookPubName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookISBN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Copyright)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateAdded)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookAuthor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookCopies)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookPub)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookPubName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookISBN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Copyright)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        <div class="btn btn-group-sm">
+                            <div class="btn btn-dark btn-sm iconop">
+                                <i class="fas fa-edit"></i>
+                                @Html.ActionLink("Edit", "Edit", null, new { id = item.BookId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-warning">
+                                <i class="fas fa-info-circle iconop"></i>
+                                @Html.ActionLink("Details", "Details", null, new { id = item.BookId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash iconop"></i>
+                                @Html.ActionLink("Delete", "Delete", null, new { id = item.BookId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                        </div>
+                </tr>
+            }
+
+        </table>
+    </div>*@

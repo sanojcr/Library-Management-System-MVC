@@ -1,0 +1,202 @@
+﻿@model IEnumerable<LibraryMSMVC.Models.tblUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+<br />
+<h4>User list</h4>
+<hr />
+<div class="btn btn-sm btn-primary" data-toggle='tooltip' title='Add user'>
+    <i class="far fa-plus-square"></i>
+    @Html.ActionLink("Add", "Create", null, new { @class = "", style = "text-decoration:none; color: white" })
+</div>
+<br />
+<br />
+
+@*External stylesheet for data table plugins*@
+<link rel="stylesheet" , href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
+<link rel="stylesheet" , href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" />
+<table width="100%" class="table table-hover table-bordered" id="example">
+    <thead class="bg-success text-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserDep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAdmNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserPass)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                UserName
+            </th>
+            <th>
+                UserGender
+            </th>
+            <th>
+                UserDep
+            </th>
+            <th>
+                UserAdmNo
+            </th>
+            <th>
+                UserEmail
+            </th>
+            <th>
+                UserPass
+            </th>
+
+        </tr>
+    </tbody>
+</table>
+<br />
+
+@*Java scripts*@
+@section scripts{
+    @*External scripts for data table plugins*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        @*Data table plugin*@
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "/tblUsers/GetAll",
+                    "type": "get",
+                    "datatype": "json",
+                },
+                "columns": [
+                    { "data": "UserName" },
+                    { "data": "UserGender" },
+                    { "data": "UserDep" },
+                    { "data": "UserAdmNo" },
+                    { "data": "UserEmail" },
+                    { "data": "UserPass" },
+                    {
+                        "data": "UserId", "render": function (idhere) {
+
+                            return " <a class='btn btn-sm btn-dark text-light' data-toggle='tooltip' title='Edit user' href='@Url.Action("Edit", "TblUsers")/" + idhere + "'> <i class='fas fa-edit'></i> Edit</a> <a class='btn btn-sm btn-warning text-light', style='margin-left:px' data-toggle='tooltip' title='User details' href='@Url.Action("Details", "TblUsers")/" + idhere+"' > <i class='fas fa-info-circle iconop'></i> Details</a > <a class='btn btn-sm btn-danger text-light', style='margin-left:px' data-toggle='tooltip' title='Delete user' href='@Url.Action("Delete", "TblUsers")/" + idhere+"' > <i class='fas fa-trash iconop'></i> Delete</a > ";
+                        },
+                        "orderable": false,
+                        "width": "225px"
+                    }
+                ],
+                "language": {
+                    "emptyTable": "No data found, Add new items"
+                }
+            });
+        });
+    </script>
+}
+
+
+@if (Session["operationMsg"] != null)
+{
+    <script type="text/javascript">
+            @*Popups the alert if the session data is there*@
+            window.onload = function () {
+                alert("@Session["operationMsg"]");
+                window.location.href = "/TblUsers/OperationAlert";
+            };
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="card">
+        <table class="table-sm">
+            <tr class="bg-success text-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserGender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserDep)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserAdmNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserPass)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserGender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserDep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAdmNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserPass)
+                    </td>
+                    <td>
+                        <div class="btn btn-group-sm">
+                            <div class="btn btn-dark btn-sm iconop">
+                                <i class="fas fa-edit"></i>
+                                @Html.ActionLink("Edit", "Edit", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-warning">
+                                <i class="fas fa-info-circle iconop"></i>
+                                @Html.ActionLink("Details", "Details", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                            <div class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash iconop"></i>
+                                @Html.ActionLink("Delete", "Delete", null, new { id = item.UserId }, new { @class = "", style = "text-decoration:none; color: white" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@

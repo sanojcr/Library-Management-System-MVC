@@ -1,0 +1,83 @@
+﻿@model LibraryMSMVC.Models.tblUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body style="padding:unset">
+    @*@using (Html.BeginForm("Validate", "User"))*@
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <br />
+
+            <div style="height:auto; width:110px; background-color:#d9534f">
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+            <br />
+            <div class="col-md-4 offset-sm-4">
+                <div class="card">
+                    <div class="card-header">Login</div>
+                    <div class="card-body offset-sm-1">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <form class="container-fluid">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the email" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserPass, htmlAttributes: new { @class = "" })
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-unlock"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.UserPass, new { htmlAttributes = new { @class = "form-control ", placeholder = "Enter the password", type = "password" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.UserPass, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <p class="text-danger">@ViewBag.Message</p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-10 offset-1">
+                            <button type="submit" value="Login" class="btn btn-sm btn-block btn-danger">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

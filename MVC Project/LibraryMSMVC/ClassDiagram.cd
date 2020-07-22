@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibraryMSMVC.Controllers.AdminController">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.AdminTransactionController">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAQAAAgAAACAAAACABAACQJAAAAAAAAAgAGBAAAAA=</HashCode>
+      <FileName>Controllers\AdminTransactionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.BorrowController">
+    <Position X="9.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQEAAAAEKBAAACAAEABCABAAAAAAAAAMAAQEAAAA=</HashCode>
+      <FileName>Controllers\BorrowController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.MainController">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAQAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\MainController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.TblBooksController">
+    <Position X="7.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAACAAAACAAAABAEAAEACAgEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TblBooksController.cs</FileName>
+      <NewMemberFileName>Controllers\tblBooksController.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.TblUsersController">
+    <Position X="5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAACAAAACABAAAAEAAEACAgEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TblUsersController.cs</FileName>
+      <NewMemberFileName>Controllers\tblUsersController.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.UserController">
+    <Position X="0.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.UserTransactionController">
+    <Position X="2.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAABQAQAAAAACAAEABCABAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Controllers\UserTransactionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryMSMVC.Controllers.ErrorController">
+    <Position X="7.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ErrorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
